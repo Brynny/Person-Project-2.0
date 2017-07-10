@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour
 {
 	public Transform player;
-	public float distance = 50f;
+	public float distance = 20f;
 
 	// Use this for initialization
 	void Start () 
