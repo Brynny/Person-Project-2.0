@@ -7,12 +7,19 @@ public class GameController : MonoBehaviour
 	public static GameController GC;
 
 	public static float _playerMoveSpeed = 5f;
+
 	public static float _playerCurrentHealth;
 	public static float _playerMaxHealth = 20f;
 
+	//AssaultRifle Variables
+	public static float _assaultRifleDamage;
+	public static float _assaultRifleRange;
+
+	//PlasmaGun Variables
+	public static float _plasmaGunDamage;
+
 	void Awake()
 	{
-		DontDestroyOnLoad(this);
 		GC = this;
 	}
 
