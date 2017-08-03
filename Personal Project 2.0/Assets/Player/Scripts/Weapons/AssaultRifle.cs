@@ -5,6 +5,7 @@ using UnityEngine;
 public class AssaultRifle : MonoBehaviour 
 {
 	public Camera PlayerCamera;
+	[SerializeField]GameObject Zombie;
 
 	// Update is called once per frame
 	void Update () 
@@ -13,6 +14,8 @@ public class AssaultRifle : MonoBehaviour
 		{
 			Shoot ();
 		}
+
+		LookForZombie ();
 	}
 
 	void Shoot()
@@ -20,7 +23,16 @@ public class AssaultRifle : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast (PlayerCamera.transform.position, PlayerCamera.transform.forward, out hit, GameController._assaultRifleRange))
 		{
-			Debug.Log (hit.transform.name);
+			if (hit.transform.tag == "Zombie")
+			{
+				Zombie.GetComponent<ZombieController> ().TakeDamage ();
+			}
+			Debug.Log (hit.transform.tag);
 		}
+	}
+
+	void LookForZombie()
+	{
+		Zombie = GameObject.FindGameObjectWithTag ("Zombie");
 	}
 }

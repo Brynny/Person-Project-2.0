@@ -17,17 +17,14 @@ public class PlayerController : MonoBehaviour
 	{
 		myRB = GetComponent<Rigidbody>();
 		mainCamera = FindObjectOfType<Camera>();
+		Time.timeScale = 1;
 	}
 
 
 	void Update () 
 	{
-
-	}
-
-	void FixedUpdate()
-	{
 		Movement();
+		LookAround ();
 	}
 
 	void Movement()
@@ -36,7 +33,10 @@ public class PlayerController : MonoBehaviour
 		moveVelocity = moveInput * GameController._playerMoveSpeed;
 
 		myRB.velocity = moveVelocity;
+	}
 
+	void LookAround()
+	{
 		Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 		Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
 		float rayLength;
