@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
 
 	//AssaultRifle Variables
 	public static float _assaultRifleDamage = 10f;
-	public static float _assaultRifleRange = 100f;
+	public static float _assaultRifleRange = 50f;
 
 	//PlasmaGun Variables
 	public static float _plasmaGunDamage;

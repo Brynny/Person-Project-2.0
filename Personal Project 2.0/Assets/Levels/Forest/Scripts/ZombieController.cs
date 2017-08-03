@@ -38,16 +38,10 @@ public class ZombieController : MonoBehaviour
 		{
 			Die ();
 		}
-			
 	}
 
 	void Die()
 	{
 		Destroy (this.gameObject);
 	}
-
-//	public void StopMovement()
-//	{
-//		agent.ResetPath();
-//	}
 }
