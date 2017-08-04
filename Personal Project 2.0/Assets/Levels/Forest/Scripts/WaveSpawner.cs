@@ -114,9 +114,9 @@ public class WaveSpawner : MonoBehaviour
 
 	void SpawnEnemyAI (Transform _enemy)
 	{
-		int randomSpawn = Random.Range (0, 3);
+		int randomSpawnPointSelect = Random.Range (0, spawnPoints.Length);
 		Debug.Log ("Spawning Enemy: " + _enemy.name);
-		Instantiate (_enemy, spawnPoints[randomSpawn].position, transform.rotation);
+		Instantiate (_enemy, spawnPoints[randomSpawnPointSelect].position, transform.rotation);
 
 	}
 

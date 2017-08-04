@@ -7,6 +7,9 @@ public class ZombieController : MonoBehaviour
 	public Transform target;
 	public GameObject zombie;
 
+	[SerializeField]private GameObject Blood;
+	[SerializeField]private Transform BloodLocation;
+
 	[SerializeField]private float _zombieHealth = 50f;
 
 	private UnityEngine.AI.NavMeshAgent agent;
@@ -33,6 +36,7 @@ public class ZombieController : MonoBehaviour
 
 	public void TakeDamage()
 	{
+		Instantiate (Blood, BloodLocation.position, BloodLocation.rotation);
 		_zombieHealth -= GameController._assaultRifleDamage;
 		if (_zombieHealth <= 0)
 		{

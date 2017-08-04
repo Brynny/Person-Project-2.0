@@ -55,6 +55,7 @@
      <Compile Include="Assets\Player\Scripts\GameController.cs" />
      <Compile Include="Assets\Player\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Player\Scripts\Weapons\AssaultRifle.cs" />
+     <Compile Include="Assets\Player\Scripts\Weapons\GunShotParticle.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
