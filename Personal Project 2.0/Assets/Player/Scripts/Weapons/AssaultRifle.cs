@@ -7,12 +7,8 @@ public class AssaultRifle : MonoBehaviour
 	public Camera PlayerCamera;
 	[SerializeField]GameObject Zombie;
 
-	[SerializeField]private GameObject GunShotParticle;
-	[SerializeField]private Transform GunShotParticleLocation;
+	[SerializeField]private ParticleSystem GunShotParticles;
 
-
-
-	// Update is called once per frame
 	void Update () 
 	{
 		if (Input.GetButtonDown ("Fire1")) 
@@ -23,6 +19,7 @@ public class AssaultRifle : MonoBehaviour
 
 	void Shoot()
 	{
+		GunShotParticles.Play ();
 		RaycastHit hit;
 		if (Physics.Raycast (PlayerCamera.transform.position, PlayerCamera.transform.forward, out hit))
 		{
@@ -32,6 +29,5 @@ public class AssaultRifle : MonoBehaviour
 			}
 			Debug.Log (hit.transform.tag);
 		}
-		Instantiate (GunShotParticle, GunShotParticleLocation.position, GunShotParticleLocation.rotation);
 	}
 }
