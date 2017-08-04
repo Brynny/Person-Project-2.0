@@ -46,6 +46,7 @@ public class ZombieController : MonoBehaviour
 
 	void Die()
 	{
+		GameController._playerExperience += 12f;
 		Destroy (this.gameObject);
 	}
 }
