@@ -11,7 +11,7 @@ public class AssaultRifle : MonoBehaviour
 
 	void Update () 
 	{
-		if (Input.GetButtonDown ("Fire1")) 
+		if (Input.GetButtonDown ("Fire1") && GameController.AssaultRifleCanShoot == true)
 		{
 			Shoot ();
 		}
@@ -23,6 +23,7 @@ public class AssaultRifle : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast (PlayerCamera.transform.position, PlayerCamera.transform.forward, out hit))
 		{
+			GameController._assaultRifleAmmo -= 1f;
 			if (hit.collider.tag == "Zombie")
 			{
 				hit.transform.SendMessage ("TakeDamage");

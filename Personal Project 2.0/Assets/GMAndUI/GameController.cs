@@ -20,6 +20,11 @@ public class GameController : MonoBehaviour
 	//AssaultRifle Variables
 	public static float _assaultRifleDamage = 10f;
 	public static float _assaultRifleRange = 50f;
+	public static float _assaultRifleMaxAmmo = 80f;
+	public static float _assaultRifleRemainingAmmo;
+	public static float _assaultRifleMagazine = 20f;
+	public static float _assaultRifleAmmo;
+	public static bool AssaultRifleCanShoot = true;
 
 	//PlasmaGun Variables
 	public static float _plasmaGunDamage;
@@ -31,6 +36,10 @@ public class GameController : MonoBehaviour
 
 	void Start () 
 	{
+		//AssaultRiffle
+		_assaultRifleAmmo = _assaultRifleMagazine;
+		_assaultRifleRemainingAmmo = _assaultRifleMaxAmmo;
+
 		_playerCurrentHealth = _playerMaxHealth;
 	}
 	
@@ -39,10 +48,11 @@ public class GameController : MonoBehaviour
 	{
 		_playerRequiredExperienceRounded = Mathf.Round (_playerRequiredExperience);
 
-		UpdateLevel ();
+		UpdateLevelUp ();
+		AssaultRifle ();
 	}
 
-	void UpdateLevel()
+	void UpdateLevelUp()
 	{
 		if (_playerExperience >= _playerRequiredExperience)
 		{
@@ -50,5 +60,26 @@ public class GameController : MonoBehaviour
 			_playerExperience = 0f;
 			_playerRequiredExperience = _playerRequiredExperience * 1.3f;
 		}
+	}
+
+	void AssaultRifle()
+	{
+		if (Input.GetKeyDown (KeyCode.R))
+		{
+			if (_assaultRifleRemainingAmmo >= _assaultRifleAmmo)
+			{
+				_assaultRifleRemainingAmmo -= _assaultRifleMagazine;
+				_assaultRifleAmmo = _assaultRifleMagazine;
+			}
+		}
+
+		if (_assaultRifleAmmo <= 0f)
+		{
+			_assaultRifleAmmo = 0f;
+			AssaultRifleCanShoot = false;
+		}
+		else
+			AssaultRifleCanShoot = true;
+		
 	}
 }

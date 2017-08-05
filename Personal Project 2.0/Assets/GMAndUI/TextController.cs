@@ -11,9 +11,12 @@ public class TextController : MonoBehaviour
 	[SerializeField]private Text PlayerRequiredExperienceText;
 	[SerializeField]private Text PlayerLevelText;
 
+	[SerializeField]private Text PlayerCurrentAmmoText;
+
 	void Update ()
 	{
 		UpdateExperience ();
+		UpdateAssaultRifleAmmo ();
 	}
 		
 	void UpdateExperience()
@@ -21,4 +24,9 @@ public class TextController : MonoBehaviour
 		PlayerRequiredExperienceText.text = "XP Required For Next Level " + GameController._playerExperience + " / " + GameController._playerRequiredExperienceRounded;
 		PlayerLevelText.text = "" + GameController._playerLevel;
 	} 
+
+	void UpdateAssaultRifleAmmo()
+	{
+		PlayerCurrentAmmoText.text = GameController._assaultRifleAmmo + " / " + GameController._assaultRifleRemainingAmmo;
+	}
 }
